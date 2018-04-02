@@ -5,6 +5,7 @@ public class Topic {
 	private String id;
 	private String name;
 	private String description;
+	// i m the king
 	
 	public Topic() {
 
