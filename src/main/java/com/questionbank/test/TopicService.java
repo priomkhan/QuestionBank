@@ -13,7 +13,6 @@ public class TopicService {
 			
 			new Topic("1", "Mission_Info", "Information about Mission"),
 			new Topic("2", "Staff_to_take", "Necessary stuff to take in a Mission")
-			//sfsfsfsfsdfsdsdfsfsdfsdf
 			));
 	
 	public List <Topic> getAllTopics(){
