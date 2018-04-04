@@ -1,0 +1,213 @@
+
+CREATE DATABASE questionbank350db;
+
+CREATE TABLE AcademicLevel (
+    Level_Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Level_Name varchar(100) NOT NULL
+    );
+
+CREATE TABLE Major (
+    Major_Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Major_Name varchar NOT NULL
+    );
+     
+CREATE TABLE Course (
+    Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Course_Name varchar NOT NULL,
+    Course_ID int NOT NULL,
+    Course_Description varchar NOT NULL,
+    Major_Id int FOREIGN KEY REFERENCES Major(Major_Id),
+    Level_Id int FOREIGN KEY REFERENCES AcademicLevel(Level_Id)
+    );
+    
+CREATE TABLE Level_Majors (
+    Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Level_Id int FOREIGN KEY REFERENCES  AcademicLevel(Level_Id) NOT NULL,
+    Major_Id int FOREIGN KEY REFERENCES  Major(Major_Id) NOT NULL
+    );
+    
+CREATE TABLE Book (
+    Book_Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Book_Name varchar NOT NULL,
+    Book_Author varchar NOT NULL,
+    Course_Id int FOREIGN KEY REFERENCES Course(Id) NOT NULL
+    );
+    
+CREATE TABLE Chapter (
+    Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Chapter_Id int NOT NULL ,
+    Chapter_Name varchar NOT NULL,
+    Book_Id int FOREIGN KEY REFERENCES Book(Book_Id) NOT NULL
+    );
+    
+CREATE TABLE User_Types (
+    User_Type varchar NOT NULL PRIMARY KEY
+    );
+
+
+ 
+    
+CREATE TABLE School (
+    School_Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    School_Name varchar NOT NULL,
+    School_Address varchar NOT NULL  
+    );
+    
+
+    
+CREATE TABLE School_Majors (
+    Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    School_Id int FOREIGN KEY REFERENCES School(School_Id) NOT NULL,
+    Level_Id int FOREIGN KEY REFERENCES  AcademicLevel(Level_Id) NOT NULL
+    );
+
+CREATE TABLE School_Level (
+    Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    School_Id int FOREIGN KEY REFERENCES School(School_Id) NOT NULL,
+    Major_Id int FOREIGN KEY REFERENCES  Major(Major_Id) NOT NULL
+    );
+    
+
+    
+    
+CREATE TABLE Professor (
+    Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Professor_fName varchar NOT NULL,
+    Professor_mName varchar NULL,
+    Professor_lName varchar NOT NULL,
+    Professor_email varchar NOT NULL,
+    Professor_PWD varchar (50) NOT NULL,
+    UserGuid uniqueidentifier NULL,
+    User_Type varchar FOREIGN KEY REFERENCES User_Types (User_Type) NOT NULL,
+    School_Id int FOREIGN KEY REFERENCES School(School_Id) NOT NULL,
+    Course_Id int FOREIGN KEY REFERENCES Course(ID) NOT NULL
+    
+    );
+    
+    
+CREATE TABLE Question_Priority (
+    Priority_Name varchar NOT NULL PRIMARY KEY
+    );
+    
+CREATE TABLE Question (
+    Question_Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Professor_Id int FOREIGN KEY REFERENCES Professor(Id) NOT NULL,
+    Course_Id int FOREIGN KEY REFERENCES Course(Id) NOT NULL,
+    Book_Id int FOREIGN KEY REFERENCES Book(Book_Id) NOT NULL,
+    Chapter_Id int FOREIGN KEY REFERENCES Chapter(Id) NOT NULL,
+    Question_Mark int NOT NULL,
+    Question_Hardnes int NOT NULL,
+    Question_Priority varchar FOREIGN KEY REFERENCES Question_Priority(Priority_Name) NOT NULL,
+    Question_Text varchar NOT NULL,
+    Option_1 varchar NOT NULL,
+    Option_2 varchar NOT NULL,
+    Option_3 varchar NOT NULL,
+    Option_4 varchar NOT NULL,
+    Option_5 varchar NULL,
+    Option_6 varchar NULL,
+    Option_7 varchar NULL,
+    Option_8 varchar NULL,
+    Answer_1 varchar NOT NULL,
+    Answer_2 varchar NULL,
+    Answer_3 varchar NULL,
+    Answer_4 varchar NULL,
+    Answer_5 varchar NULL,
+    Answer_6 varchar NULL,
+    Answer_7 varchar NULL,
+    Answer_8 varchar NULL
+    );
+    
+CREATE TABLE Temp_Question (
+    Question_Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Professor_Id int FOREIGN KEY REFERENCES Professor(Id) NOT NULL,
+    Course_Id int FOREIGN KEY REFERENCES Course(Id) NOT NULL,
+    Book_Id int FOREIGN KEY REFERENCES Book(Book_Id) NOT NULL,
+    Chapter_Id int FOREIGN KEY REFERENCES Chapter(Id) NOT NULL,
+    Question_Mark int NOT NULL,
+    Question_Hardnes int NOT NULL,
+    Question_Priority varchar FOREIGN KEY REFERENCES Question_Priority(Priority_Name) NOT NULL,
+    Question_Text varchar NOT NULL,
+    Option_1 varchar NOT NULL,
+    Option_2 varchar NOT NULL,
+    Option_3 varchar NOT NULL,
+    Option_4 varchar NOT NULL,
+    Option_5 varchar NULL,
+    Option_6 varchar NULL,
+    Option_7 varchar NULL,
+    Option_8 varchar NULL,
+    Answer_1 varchar NOT NULL,
+    Answer_2 varchar NULL,
+    Answer_3 varchar NULL,
+    Answer_4 varchar NULL,
+    Answer_5 varchar NULL,
+    Answer_6 varchar NULL,
+    Answer_7 varchar NULL,
+    Answer_8 varchar NULL
+    );
+    
+
+CREATE TABLE Exam_Year (
+    Exam_Year int NOT NULL PRIMARY KEY
+    );
+        
+CREATE TABLE Exam (
+    Exam_Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Course_Id int FOREIGN KEY REFERENCES Course(ID) NOT NULL,
+    School_Id int FOREIGN KEY REFERENCES School(School_Id) NOT NULL,
+    NumberOfQuestions int NOT NULL,
+    Exam_Mark int NOT NULL,
+    Exam_Year int FOREIGN KEY REFERENCES Exam_Year(Exam_Year) NOT NULL,
+    Exam_date datetime
+    );
+
+
+CREATE TABLE Exam_Questions (
+    Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Exam_Id int FOREIGN KEY REFERENCES Exam(Exam_ID) NOT NULL,
+    Question_Id int FOREIGN KEY REFERENCES Question(Question_Id) NOT NULL,
+    Question_Number int not null
+    );  
+
+    
+//Extra Tables   
+
+CREATE TABLE Privilegation_Types (
+    Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Privilegation_Type varchar NOT NULL
+    ); 
+    
+CREATE TABLE Exam_Date (
+    Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Course_Id int FOREIGN KEY REFERENCES Course(ID) NOT NULL,
+    Exam_Date 
+    );
+    
+
+CREATE TABLE Student (
+    Student_Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Student_fName varchar NOT NULL,
+    Student_mName varchar NULL,
+    Student_lName varchar NOT NULL,
+    Student_email varchar NOT NULL,
+    Student_PWD varchar (50) NOT NULL,
+    UserGuid uniqueidentifier NULL,
+    User_Type varchar FOREIGN KEY REFERENCES User_Types (User_Type) NOT NULL,
+    Student_DOB date NOT NULL,
+    School_Id int FOREIGN KEY REFERENCES School(School_Id) NOT NULL,
+    Major_Id int FOREIGN KEY REFERENCES Major(Major_ID) NOT NULL
+    );
+    
+CREATE TABLE Student_Course (
+    Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Student_Id int FOREIGN KEY REFERENCES Student(Student_Id) NOT NULL,
+    Course_Id int FOREIGN KEY REFERENCES Course(ID) NOT NULL
+    );    
+    
+    
+
+CREATE TABLE SMajor (
+    Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Major_Name varchar NOT NULL,
+    );
+
+    
