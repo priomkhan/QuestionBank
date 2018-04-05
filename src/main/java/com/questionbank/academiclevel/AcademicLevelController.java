@@ -26,7 +26,7 @@ public class AcademicLevelController {
 	}
 	
 	
-	@RequestMapping("/academicLevel/{id}")
+	@RequestMapping("/academicLevel/{pid}")
 	public Optional<AcademicLevel> getAcademicLevelById(@PathVariable Integer pid) {
 		
 		return newService.getAcademicLevelById(pid);
@@ -39,12 +39,12 @@ public class AcademicLevelController {
 		newService.addAcademicLevel(newData);
 	}
 	
-	@RequestMapping(method=RequestMethod.PUT, value="/academicLevel/{id}")
+	@RequestMapping(method=RequestMethod.PUT, value="/academicLevel/{pid}")
 	public void updateAcademicLevel(@RequestBody AcademicLevel newData, @PathVariable Integer pid) {
 		newService.updateAcademicLevel(pid,newData);
 	}
 	
-	@RequestMapping(method=RequestMethod.DELETE, value="/academicLevel/{id}")
+	@RequestMapping(method=RequestMethod.DELETE, value="/academicLevel/{pid}")
 	public void deleteTopic(@PathVariable Integer id) {
 		newService.deleteAcademicLevel(id);
 	}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>NexteK-Admin</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<!-- Header -->
+<header class="AdminPg">
+    <div class="container">
+        <div class="jumbotron" style="background-color:#6baf56;">
+        <h1>Welcome Admin</h1>
+        <h2>Choose a Command</h2>
+        <button type="button" class="btn btn-sm">Logout</button>
+    </div>
+    </div>
+</header>
+<form action="admin" method="get">
+
+<div class="row1">
+    <div class="col-lg-3 text-center">
+        <button type="button" class="btn btn-primary btn-lg" name="addschool">Add School</button>
+        <button type="button" class="btn btn-primary btn-lg" name="addprof">Add Professor</button>
+        <button type="button" class="btn btn-primary btn-lg" name="addq">Add Questions</button>
+		<button type="button" class="btn btn-primary btn-lg" name="addbook">Add Books</button>
+		<button type="button" class="btn btn-primary btn-lg" name="addcourse">Add Course</button>
+		
+       
+    </div>
+</div>
+<div class="row2">
+    <div class="col-lg-3 text-center">
+        <button type="button" class="btn btn-warning btn-lg" name="reviewq">Review Questions</button>
+        <button type="button" class="btn btn-warning btn-lg" name="genexam">Generate Exam</button>
+
+    </div>
+</div>
+<div class="row3">
+    <div class="col-lg-3 text-center">
+        <button type="button" class="btn btn-danger btn-lg" name="changepass">Change Password</button>
+        <button type="button" class="btn btn-danger btn-lg" name="removequestions">Remove Questions</button>
+        <button type="button" class="btn btn-danger btn-lg" name="removecourse">Remove Course</button>
+        <button type="button" class="btn btn-danger btn-lg" name="removebooks">Remove Books</button>
+        <button type="button" class="btn btn-danger btn-lg" name="removeschool">Remove School</button>
+        <button type="button" class="btn btn-danger btn-lg" name="removeprof">Remove Professor</button>
+    </div>
+</div>
+</form>
+</body>
+</html>

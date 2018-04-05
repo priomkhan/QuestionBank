@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Professor</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+
+</head>
+<body>
+<header class="AddProf">
+    <div class="container">
+        <div class="jumbotron" style="background-color: #4d7042;">
+            <h1>Add Professor</h1>
+        </div>
+    </div>
+</header>
+
+<div class="AddProf">
+    <div class="col-lg-12 text-centre">
+            <form action="addprof" method="post">
+                <div class="AddProf">
+                    <label for="fname" class="col-sm-2 col-form-label col-form-label-lg">Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control form-control-sm" id="fname" placeholder="Enter First Name">
+                    </div>
+                </div>
+                <div class="AddPof">
+                    <label for="lname" class="col-sm-2 col-form-label col-form-label-lg">Last Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control form-control-sm" id="lname" placeholder="Enter Last Name">
+                    </div>
+                </div>
+                    <div class="AddProf">
+                        <label for="id" class="col-sm-2 col-form-label col-form-label-lg">Create ID</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-control-sm" id="id" placeholder="Example: name321">
+                        </div>
+                    </div>
+                    <div class="AddProf">
+                        <label for="pwd" class="col-sm-2 col-form-label col-form-label-lg">Create Password</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-control-sm" id="pwd" placeholder="Example: 123456789">
+                        </div>
+                    </div>
+                <div class="AddProf">
+                    <label for="school" class="col-sm-2 col-form-label col-form-label-lg">School ID</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control form-control-sm" id="school" placeholder="Enter School ID">
+                    </div>
+                </div>
+                <div class="AddProf">
+                    <label for="Courseid" class="col-sm-2 col-form-label col-form-label-lg">Enter Course ID</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control form-control-sm" id="Courseid" placeholder="Example: 123456789">
+                    </div>
+                </div>
+                    <div class="AddProf">
+                        <div class="col-sm-offset-1 col-sm-10">
+                            <div class="checkbox">
+                            <label><input type="checkbox" id="check1">Can Review Questions</label>
+                        </div>
+                        </div>
+                    </div>
+                <div class="AddProf">
+                    <div class="col-sm-offset-1 col-sm-10">
+                        <div class="checkbox1">
+                            <label><input type="checkbox" id="check2">Can Add Questions</label>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="AddProf">
+                        <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-warning">Submit</button>
+                        </div>
+                    </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

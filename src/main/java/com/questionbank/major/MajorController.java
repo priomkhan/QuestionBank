@@ -26,7 +26,7 @@ public class MajorController {
 	}
 	
 	
-	@RequestMapping("/major/{id}")
+	@RequestMapping("/major/{pid}")
 	public Optional<Major> getMajorById(@PathVariable Integer pid) {
 		
 		return newService.getMajorById(pid);
@@ -39,12 +39,12 @@ public class MajorController {
 		newService.addMajor(newData);
 	}
 	
-	@RequestMapping(method=RequestMethod.PUT, value="/major/{id}")
+	@RequestMapping(method=RequestMethod.PUT, value="/major/{pid}")
 	public void updateMajor(@RequestBody Major newData, @PathVariable Integer pid) {
 		newService.updateMajor(pid,newData);
 	}
 	
-	@RequestMapping(method=RequestMethod.DELETE, value="/major/{id}")
+	@RequestMapping(method=RequestMethod.DELETE, value="/major/{pid}")
 	public void deleteTopic(@PathVariable Integer id) {
 		newService.deleteMajor(id);
 	}
